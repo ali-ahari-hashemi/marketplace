@@ -32,7 +32,7 @@ export default class SwipeInterface extends React.Component {
     return (
       <View>
         <DeckSwiper
-          looping='false'
+          looping={false}
           onSwipeRight={this.swipeRight}
           onSwipeLeft={this.swipeLeft}
           ref={(c) => this._deckSwiper = c}
