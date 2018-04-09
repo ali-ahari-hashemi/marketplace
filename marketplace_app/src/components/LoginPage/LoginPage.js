@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, KeyboardAvoidingView } from 'react-native';
+import LoginForm from './LoginForm';
 
 export default class LoginPage extends React.Component {
   render(){
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
@@ -13,8 +14,9 @@ export default class LoginPage extends React.Component {
           <Text style={styles.title}> Welcome to the Marketplace!</Text>
         </View>
         <View style={styles.formContainer}>
+          <LoginForm />
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -37,8 +39,8 @@ const styles = StyleSheet.create({
     opacity: 5
   },
   logo: {
-    width: 100,
-    height: 100
+    width: 120,
+    height: 120
   }
 
 });
