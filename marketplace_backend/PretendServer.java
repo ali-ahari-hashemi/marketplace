@@ -34,7 +34,7 @@
 					pw.flush();
 				}
 				rs.close();
-				ps = conn.prepareStatement("REMOVE * FROM Cards where itemID = ?");
+				ps = conn.prepareStatement("DELETE FROM Cards where itemID = ?");
 				ps.setInt(1, item);
 				ps.execute();
 			}
@@ -71,7 +71,7 @@
 			{
 				while (true)
 				{
-					pw.println("Do you want to add an item or get them?\n1) Add an item\n2) Print Items");
+					pw.println("Do you want to add an item or get them?\n1) Add an item\n2) Remove an item\n3) Print Items");
 					pw.flush();
 					String choice = br.readLine();
 					int c = Integer.parseInt(choice);
@@ -131,6 +131,21 @@
 						{
 							System.out.println("image error " + e.getLocalizedMessage());
 						}
+					}
+					else if (c == 2)
+					{
+						pw.println("Which item are you removing");
+						pw.flush();
+						String name = br.readLine();
+						int itemNum = -1;
+						ps = conn.prepareStatement("Select itemID from Cards where name=?");
+						ps.setString(1, name);
+						rs = ps.executeQuery();
+						if (rs.next())
+						{
+							itemNum = rs.getInt("itemID");
+						}
+						removeItem(pw, itemNum);
 					}
 					else
 					{
