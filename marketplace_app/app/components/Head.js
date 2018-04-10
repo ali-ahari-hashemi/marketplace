@@ -14,7 +14,7 @@ export default class Head extends React.Component {
 
         <View style={styles.buttonWrapper}>
           <Button transparent style={styles.buttonContainer}>
-            <Icon name='ios-pricetags-outline' style={styles.buttonIcon}/>
+            <Icon name='ios-pricetags-outline' style={styles.buttonIconActive}/>
           </Button>
         </View>
 
@@ -30,7 +30,9 @@ export default class Head extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    height: 75,
+    height: 80,
+    paddingTop: 20,
+    paddingBottom: 10,
     marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -49,6 +51,10 @@ const styles = StyleSheet.create({
   },
   buttonIcon: {
     color: '#1f1f1f',
+    fontSize: 35,
+  },
+  buttonIconActive: {
+    color: '#3498db',
     fontSize: 35,
   },
 });

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Text, StatusBar } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
 export default class LoginForm extends React.Component {
   render(){
@@ -7,7 +8,7 @@ export default class LoginForm extends React.Component {
       <View style={styles.container}>
         <StatusBar
           barStyle="light-content"
-          />
+        />
         <TextInput
           placeholder="username"
           placeholderTextColor="rgba(255,255,255,0.7)"
@@ -16,7 +17,7 @@ export default class LoginForm extends React.Component {
           autoCapitalize="none"
           autoCorrect={false}
           style={styles.input}
-          />
+        />
         <TextInput
           placeholder="password"
           placeholderTextColor="rgba(255,255,255,0.7)"
@@ -24,11 +25,7 @@ export default class LoginForm extends React.Component {
           secureTextEntry
           style={styles.input}
           ref={(input) => this.passwordInput = input}
-          />
-
-        <TouchableOpacity style={styles.buttonContainer}>
-          <Text style={styles.buttonText}> LOGIN </Text>
-        </TouchableOpacity>
+        />
       </View>
     );
   }
@@ -36,7 +33,8 @@ export default class LoginForm extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
+    padding: 20,
+    paddingBottom: 0,
   },
   input: {
     height: 40,
