@@ -30,7 +30,7 @@ export default class SwipeInterface extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <DeckSwiper
           looping={false}
           onSwipeRight={this.swipeRight}

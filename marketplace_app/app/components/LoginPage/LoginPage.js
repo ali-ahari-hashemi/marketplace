@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Text, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, Image, Text, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import LoginForm from './LoginForm';
 
 export default class LoginPage extends React.Component {
+  static navigationOptions = { header: null }
+
   render(){
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -15,6 +18,16 @@ export default class LoginPage extends React.Component {
         </View>
         <View style={styles.formContainer}>
           <LoginForm />
+          <View style={styles.buttonWrapper}>
+            <TouchableOpacity style={styles.buttonContainer}>
+              <Text
+                style={styles.buttonText}
+                onPress={() => this.props.navigation.navigate('Main')}
+              >
+              LOGIN
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </KeyboardAvoidingView>
     );
@@ -41,6 +54,20 @@ const styles = StyleSheet.create({
   logo: {
     width: 120,
     height: 120
+  },
+  buttonWrapper: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 50,
+  },
+  buttonContainer: {
+    backgroundColor: '#2980b9',
+    paddingVertical: 10
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#FFFFFF',
+    fontWeight: '700'
   }
 
 });
