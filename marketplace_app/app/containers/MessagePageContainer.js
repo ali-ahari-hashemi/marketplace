@@ -1,19 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Container, Button, Icon } from 'native-base';
-import MainPage from '../components/MainPage';
-import { SwitchNavigator } from 'react-navigation';
+import MessagePage from '../components/MessagePage';
 
-export default class MainPageContainer extends React.Component {
-  static navigationOptions = { header: null }
-
-  constructor(props) {
-    super(props);
-    console.log("In Main");
-    console.log(props);
-  }
-
-  render() {
+export default class MessagePageContainer extends React.Component {
+  render(){
     return (
       <Container>
         <View style={styles.header}>
@@ -27,25 +18,26 @@ export default class MainPageContainer extends React.Component {
           </View>
 
           <View style={styles.buttonWrapper}>
-            <Button transparent style={styles.buttonContainer}>
-              <Icon name='ios-pricetags-outline' style={styles.buttonIconActive}/>
+            <Button transparent
+              style={styles.buttonContainer}
+              onPress={() => this.props.navigation.navigate('Main', {userID: this.props.userID})}
+            >
+              <Icon name='ios-pricetags-outline' style={styles.buttonIcon}/>
             </Button>
           </View>
 
           <View style={styles.buttonWrapper}>
-            <Button transparent
-              style={styles.buttonContainer}
-              onPress={() => this.props.navigation.navigate('Message', {userID: this.props.userID})}
-            >
-              <Icon name='ios-chatbubbles-outline' style={styles.buttonIcon} />
+            <Button transparent style={styles.buttonContainer}>
+              <Icon name='ios-chatbubbles-outline' style={styles.buttonIconActive} />
             </Button>
           </View>
         </View>
 
-        <MainPage
+        <MessagePage
           host={this.props.screenProps.host}
           userID={this.userID}
         />
+
       </Container>
     );
   }

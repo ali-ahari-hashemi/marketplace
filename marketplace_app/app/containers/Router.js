@@ -1,7 +1,9 @@
 import React from 'react';
 import { Container, Header, View, Text, Left, Body, Icon } from 'native-base';
-import MainPageContainer from './MainPageContainer';
 import LoginPage from '../components/LoginPage'
+import MainPageContainer from './MainPageContainer';
+import UserPageContainer from './UserPageContainer';
+import MessagePageContainer from './MessagePageContainer';
 import { SwitchNavigator } from 'react-navigation';
 
 const mapNavigationStateParamsToProps = (SomeComponent) => {
@@ -22,6 +24,12 @@ const Screens = SwitchNavigator(
     Main: {
       screen: mapNavigationStateParamsToProps(MainPageContainer),
     },
+    User: {
+      screen: mapNavigationStateParamsToProps(UserPageContainer),
+    },
+    Message: {
+      screen: mapNavigationStateParamsToProps(MessagePageContainer),
+    }
   },
   {
     initialRouteName: 'Login',

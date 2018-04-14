@@ -3,11 +3,17 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 
 export default class Head extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <View style={styles.header}>
         <View style={styles.buttonWrapper}>
-          <Button transparent style={styles.buttonContainer}>
+          <Button transparent
+            style={styles.buttonContainer}
+          >
               <Icon name='ios-contact-outline' style={styles.buttonIcon} />
           </Button>
         </View>

@@ -1,42 +1,26 @@
 [
   {
     "itemForSale": "Unused Iphone X",
-    "userName": "alihashemi",
+    "userName": "bob",
     "userID": "1",
     "distance": ".5 Miles",
-    "price": "$40",
-    "imageURL": "test.test"
+    "price": "$500",
+    "imageURL": "https://i.imgur.com/zbh721x.jpg"
   },
   {
-    "itemForSale": "Unused Iphone X",
-    "userName": "alihashemi",
-    "userID": "1",
-    "distance": ".5 Miles",
-    "price": "$40",
-    "imageURL": "test.test"
+    "itemForSale": "PS4",
+    "userName": "jeff",
+    "userID": "2",
+    "distance": "10 miles",
+    "price": "$200",
+    "imageURL": "https://i.imgur.com/ILlxG2j.jpg"
   },
   {
-    "itemForSale": "Unused Iphone X",
-    "userName": "alihashemi",
-    "userID": "1",
-    "distance": ".5 Miles",
-    "price": "$40",
-    "imageURL": "test.test"
-  },
-  {
-    "itemForSale": "Unused Iphone X",
-    "userName": "alihashemi",
-    "userID": "1",
-    "distance": ".5 Miles",
-    "price": "$40",
-    "imageURL": "test.test"
-  },
-  {
-    "itemForSale": "Unused Iphone X",
-    "userName": "alihashemi",
-    "userID": "1",
-    "distance": ".5 Miles",
-    "price": "$40",
-    "imageURL": "test.test"
+    "itemForSale": "Car",
+    "userName": "jessica",
+    "userID": "3",
+    "distance": "3 Miles",
+    "price": "$5,000",
+    "imageURL": "https://i.imgur.com/nudswXu.jpg"
   }
 ]
