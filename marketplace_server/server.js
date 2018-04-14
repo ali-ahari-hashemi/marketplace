@@ -20,6 +20,16 @@ io.on('connection', (socket) => {
     console.log(data.username);
     console.log(data.password);
 
+    var exec = require('child_process').exec, child;
+    child = exec('java -jar ./bin/test.jar',
+      function (error, stdout, stderr){
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        if(error !== null){
+          console.log('exec error: ' + error);
+        }
+    });
+
     // Send user ID to client if valid
     const validUserLogin = true; // TODO set this based on java program
     const userID = 1; // TODO set this based on java program
