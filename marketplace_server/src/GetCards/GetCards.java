@@ -1,5 +1,3 @@
-package cards;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,7 +12,7 @@ public class GetCards {
 		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=wptfvTNc3s_*&useSSL=false");
 			ps = conn.prepareStatement("SELECT itemJson FROM Cards where userID !=? ORDER BY RAND()");
 			int user = Integer.parseInt(args[0]);
 			ps.setInt(1, user);
