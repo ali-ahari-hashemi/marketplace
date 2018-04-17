@@ -10,23 +10,17 @@ export default class ProfilePage extends React.Component {
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
-            source={require('../../Images/profile.png')}
           />
-            <Text style={styles.title}> FirstName LastName </Text>
-
-            <View style={styles.forms}>
-
-              <View style={styles.formContainer}>
-                <UpdateBio />
-              </View>
-
-              <View style={styles.formContainer}>
-                <UpdatePasswordForm />
-              </View>
+          <Text style={styles.title}> FirstName LastName </Text>
+          <View style={styles.forms}>
+            <View style={styles.formContainer}>
+              <UpdateBio />
             </View>
-
+            <View style={styles.formContainer}>
+              <UpdatePasswordForm />
+            </View>
+          </View>
         </View>
-
       </KeyboardAvoidingView>
     );
   }
