@@ -1,26 +1,19 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import { Button, Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+import Head from './Head';
+import SocketIOClient from 'socket.io-client';
 
-const cards = [
-  {
-    itemForSale: 'Unused Iphone X',
-    userName: 'alihashemi',
-    distance: '.5 Miles'
-  },
-  {
-    itemForSale: 'Skittles',
-    userName: 'bobiscool',
-    distance: '10 Miles',
-  },
-];
-
-export default class SwipeInterface extends React.Component {
+export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.swipeRight = this.swipeRight.bind(this);
     this.swipeLeft = this.swipeLeft.bind(this);
+    this.state = {
+      cards: null,
+    }
   }
+
   swipeRight() {
     // TODO
   }
@@ -28,15 +21,30 @@ export default class SwipeInterface extends React.Component {
     // TODO
   }
 
+  componentWillMount() {
+    this.socket = SocketIOClient(this.props.host);
+    this.socket.emit("getCards", this.props.userID);
+    this.socket.on("sendCards", (data) => this.setState({cards: data}));
+  }
+  
+  componentWillUnmount() {
+    this.socket.disconnect();
+  }
+
   render() {
+    // Wait till received cards
+    if (!this.state.cards) {
+      return null;
+    }
+
     return (
-      <View>
+      <View style={styles.container}>
         <DeckSwiper
           looping={false}
           onSwipeRight={this.swipeRight}
           onSwipeLeft={this.swipeLeft}
           ref={(c) => this._deckSwiper = c}
-          dataSource={cards}
+          dataSource={this.state.cards}
           renderEmpty={() =>
             <View style={{ alignSelf: "center" }}>
               <Text>No More Items Near You</Text>
@@ -53,11 +61,13 @@ export default class SwipeInterface extends React.Component {
                 </Left>
               </CardItem>
               <CardItem cardBody>
-                <View style={styles.cardbody}>
-                </View>
+                  <Image style={{ height:500, flex:1 }} source={{uri: item.imageURL}} />
               </CardItem>
               <CardItem>
-                <Text>{item.distance}</Text>
+                <View style={styles.cardFooter}>
+                  <Text>{item.distance}</Text>
+                  <Text>{item.price}</Text>
+                </View>
               </CardItem>
             </Card>
           }
@@ -68,7 +78,9 @@ export default class SwipeInterface extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  cardbody: {
-    height: 400,
-  },
+  cardFooter: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  }
 });
