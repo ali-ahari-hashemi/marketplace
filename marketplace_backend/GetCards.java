@@ -36,7 +36,7 @@ public class GetCards {
 			jsonOut = jsonOut.substring(0, jsonOut.length() - 1);
 			jsonOut += "]";
 			System.out.println(jsonOut);
-			
+
 		}
 		catch (SQLException e)
 		{
@@ -47,7 +47,7 @@ public class GetCards {
 			System.err.println("Class Not found " + e.getMessage());
 		}
 		finally {
-			try 
+			try
 			{
 				 if (rs != null)
 					 rs.close();
@@ -55,7 +55,7 @@ public class GetCards {
 					 ps.close();
 				 if (conn != null)
 					 conn.close();
-				
+
 			}
 			catch (SQLException e)
 			{

@@ -1,1 +1,2 @@
 Main-Class: GetCards
+Class-Path: ../../../lib/mysql-connector-java-5.1.46.jar

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src/test"/>
+	<classpathentry kind="lib" path="lib/AddCard.jar"/>
+	<classpathentry kind="lib" path="lib/GetCards.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.46.jar"/>
+	<classpathentry kind="lib" path="lib/test.jar"/>
+	<classpathentry kind="lib" path="src/GetCards/GetCards.jar"/>
+	<classpathentry kind="output" path="src/test"/>
+</classpath>
