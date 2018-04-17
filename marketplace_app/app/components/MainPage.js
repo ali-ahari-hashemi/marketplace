@@ -26,6 +26,10 @@ export default class MainPage extends React.Component {
     this.socket.emit("getCards", this.props.userID);
     this.socket.on("sendCards", (data) => this.setState({cards: data}));
   }
+  
+  componentWillUnmount() {
+    this.socket.disconnect();
+  }
 
   render() {
     // Wait till received cards

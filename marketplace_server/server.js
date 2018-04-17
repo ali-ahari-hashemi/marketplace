@@ -38,10 +38,22 @@ io.on('connection', (socket) => {
     else { socket.emit("invalidUser")}
   });
 
-  // Getting cards for client
+  // Get user object associated with given userID
+  socket.on("getUser", (userID) => {
+    const user = require('./testFiles/user.json'); // TODO set this based on java program
+    socket.emit("sendUser", user);
+  });
+
+  // Get cards for client
   socket.on("getCards", (userID) => {
     const cards = require('./testFiles/cards.json'); // TODO set this based on java program
     socket.emit("sendCards", cards);
+  });
+
+  // Get messages for the given userID
+  socket.on("getMessages", (userID) => {
+    const messages = require('./testFiles/messages.json'); // TODO set this based on java program
+    socket.emit("sendMessages", messages);
   });
 
   // Socket Disconnected

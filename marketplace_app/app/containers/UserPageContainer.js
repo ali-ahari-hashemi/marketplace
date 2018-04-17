@@ -37,7 +37,7 @@ export default class UserPageContainer extends React.Component {
 
         <UserPage
           host={this.props.screenProps.host}
-          userID={this.userID}
+          userID={this.props.userID}
         />
 
       </Container>

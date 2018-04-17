@@ -1,24 +1,27 @@
 [
   {
+    "cardID": 1,
     "itemForSale": "Unused Iphone X",
     "userName": "bob",
-    "userID": "1",
+    "userID": 1,
     "distance": ".5 Miles",
     "price": "$500",
     "imageURL": "https://i.imgur.com/zbh721x.jpg"
   },
   {
+    "cardID": 2,
     "itemForSale": "PS4",
     "userName": "jeff",
-    "userID": "2",
+    "userID": 2,
     "distance": "10 miles",
     "price": "$200",
     "imageURL": "https://i.imgur.com/ILlxG2j.jpg"
   },
   {
+    "cardID": 3,
     "itemForSale": "Car",
     "userName": "jessica",
-    "userID": "3",
+    "userID": 3,
     "distance": "3 Miles",
     "price": "$5,000",
     "imageURL": "https://i.imgur.com/nudswXu.jpg"

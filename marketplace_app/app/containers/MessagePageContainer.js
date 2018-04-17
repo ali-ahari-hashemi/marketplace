@@ -4,6 +4,10 @@ import { Container, Button, Icon } from 'native-base';
 import MessagePage from '../components/MessagePage';
 
 export default class MessagePageContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
   render(){
     return (
       <Container>
@@ -35,7 +39,7 @@ export default class MessagePageContainer extends React.Component {
 
         <MessagePage
           host={this.props.screenProps.host}
-          userID={this.userID}
+          userID={this.props.userID}
         />
 
       </Container>

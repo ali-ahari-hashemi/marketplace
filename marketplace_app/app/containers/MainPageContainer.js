@@ -9,8 +9,6 @@ export default class MainPageContainer extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("In Main");
-    console.log(props);
   }
 
   render() {
@@ -44,7 +42,7 @@ export default class MainPageContainer extends React.Component {
 
         <MainPage
           host={this.props.screenProps.host}
-          userID={this.userID}
+          userID={this.props.userID}
         />
       </Container>
     );
