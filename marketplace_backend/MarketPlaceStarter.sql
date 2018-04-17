@@ -6,7 +6,7 @@ Drop Table if Exists Cards;
 Drop Table if Exists User;
 
 
-    Create Table User (
+Create Table User (
 	userID int(11) not null AUTO_INCREMENT,
     username varchar(50) not null,
     password varchar(50) not null,
@@ -20,11 +20,22 @@ Create Table Cards (
     userID int(11) not null,
     primary key (cardID),
     constraint userID foreign key (userID) references User (userID) );
+
 Create Table SwipedCards (
 	usersID int(11) not null,
     cardID int(11) not null,
     constraint usersID foreign key (usersID) references User (userID),
     constraint cardID foreign key (cardID) references Cards (cardID) );
+
+Create Table Conversations (
+    buyerID int(11) not null,
+    sellerID int(11) not null,
+    messagesJson json,
+    time timestamp not null;
+    constraint buyerID foreign key (buyerID) references User (userID),
+    constraint sellerID foreign key (sellerID) references User (userID);
+)
+
 
 	INSERT INTO User (username, password) values ('Heermann', 'Andrew'), ('Shah', 'Aditya' ), ('Chan', 'Allison'), ('Hashemi', 'Ali');
 
@@ -53,3 +64,6 @@ Create Table SwipedCards (
   }', current_timestamp(), 1) ;
 
     INSERT INTO SwipedCards (usersID, cardID) values (1, 1);
+
+    INSERT INTO Conversations (buyerID, sellerID, time) values
+    (1, 2, current_timestamp())
