@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "node-jre": "^0.2.3",
     "socket.io": "^2.1.0"
   }
 }
