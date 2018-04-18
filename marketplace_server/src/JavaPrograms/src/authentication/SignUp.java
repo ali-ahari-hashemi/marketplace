@@ -12,12 +12,28 @@ public class SignUp {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		try {
+		try {//0-username, 1- password, 2-first name, 3-last name
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=root&useSSL=false");
+			ps = conn.prepareStatement("Select count(userID) as count from User where 1=1");
+			rs = ps.executeQuery();
+			int newID = -1;
+
+			if (rs.next())
+			{
+				newID = rs.getInt("count") + 1;
+				//System.out.println(cardID);
+			}
+			
 			ps = conn.prepareStatement("Select userID from User where" +
 					" username=?");
 			ps.setString(1, args[0]);
+			String json = "{ \n \"userID\": \"" + newID + "\",";
+			json += "\n \"username\": \"" + args[0] + "\",";
+			json += "\n \"firstName\": \"" + args[2] + "\",";
+			json += "\n \"lastName\": \"" + args[3] + "\",";
+			json += "\n \"bio\": \"Add a bio!\"\n}";
+			System.out.println(json);
 			rs = ps.executeQuery();
 			if (rs.next())
 			{
@@ -28,11 +44,12 @@ public class SignUp {
 				}
 				else
 				{
-					ps = conn.prepareStatement("Insert into User (username, password) values (?, ?)");
+					ps = conn.prepareStatement("Insert into User (username, password, userJson) values (?, ?, ?)");
 					ps.setString(1, args[0]);
 					ps.setString(2, args[1]);
+					ps.setObject(3,  json);
 					ps.executeUpdate();
-					ps = conn.prepareStatement("Select userID from User where" +
+					/*ps = conn.prepareStatement("Select userID from User where" +
 							" username=? and password=?");
 					ps.setString(1, args[0]);
 					ps.setString(2, args[1]);
@@ -46,16 +63,18 @@ public class SignUp {
 					else
 					{
 						System.err.println("register error");
-					}
+					}*/
+					System.out.println(newID);
 				}
 			}
 			else
 			{
-				ps = conn.prepareStatement("Insert into User (username, password) values (?, ?)");
+				ps = conn.prepareStatement("Insert into User (username, password, userJson) values (?, ?, ?)");
 				ps.setString(1, args[0]);
 				ps.setString(2, args[1]);
+				ps.setObject(3,  json);
 				ps.executeUpdate();
-				ps = conn.prepareStatement("Select userID from User where" +
+				/*ps = conn.prepareStatement("Select userID from User where" +
 						" username=? and password=?");
 				ps.setString(1, args[0]);
 				ps.setString(2, args[1]);
@@ -69,7 +88,8 @@ public class SignUp {
 				else
 				{
 					System.err.println("register error");
-				}			
+				}		*/
+				System.out.println(newID);
 			}
 		}
 		catch (SQLException e)
