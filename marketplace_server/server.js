@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
     console.log(data.password);
 
     var exec = require('child_process').exec, child;
-    child = exec('java -jar ./lib/test.jar',
+    child = exec('java -jar ./lib/test.jar' [json.replace("\"", "\\\"")],
       function (error, stdout, stderr){
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
@@ -44,16 +44,34 @@ io.on('connection', (socket) => {
     socket.emit("sendUser", user);
   });
 
+
+  // Add Card
+  socket.on("addCard", (data) => {
+
+  });
+
   // Get cards for client
   socket.on("getCards", (userID) => {
     const cards = require('./testFiles/cards.json'); // TODO set this based on java program
     socket.emit("sendCards", cards);
   });
 
-  // Get messages for the given userID
-  socket.on("getMessages", (userID) => {
+  // Get conversations of client
+  socket.on("getConversations", (userID) => {
+    const conversations = require('./testFiles/conversations.json'); // TODO set this based on java program
+    socket.emit("sendConversations", conversations);
+  });
+
+  // Get messages for the given userID data: {userID1, userID2}
+  socket.on("getMessages", (data) => {
     const messages = require('./testFiles/messages.json'); // TODO set this based on java program
     socket.emit("sendMessages", messages);
+  });
+
+  // Client sends message to other user. Data in the form {userID1, userID2, message}
+  socket.on("sendMessage", (data) => {
+    console.log(data.userID1, data.userID2, data.message);
+    // TODO sendMessage java program call here to update messages for both users on database
   });
 
   // Socket Disconnected

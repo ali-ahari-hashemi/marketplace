@@ -15,7 +15,7 @@ export default class MainPage extends React.Component {
   }
 
   swipeRight() {
-    // TODO
+    this.socket.emit({userID1: this.props.userID, userID2: this.state.currentCard.userID, swipeDirection: 1});
   }
   swipeLeft() {
     // TODO
@@ -26,7 +26,7 @@ export default class MainPage extends React.Component {
     this.socket.emit("getCards", this.props.userID);
     this.socket.on("sendCards", (data) => this.setState({cards: data}));
   }
-  
+
   componentWillUnmount() {
     this.socket.disconnect();
   }

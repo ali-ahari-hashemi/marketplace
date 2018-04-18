@@ -1,0 +1,32 @@
+[
+  {
+    "_id": 1,
+    "text": "Hello developer",
+    "createdAt": "2016-03-11T13:37:27+00:00",
+    "user": {
+      "_id": 2,
+      "name": "React Native",
+      "avatar": "https://www.fullstacklabs.co/img/developersReact/react_big-7648094b.png"
+    }
+  },
+  {
+    "_id": 2,
+    "text": "Hello hi",
+    "createdAt": "2016-03-12T13:37:27+00:00",
+    "user": {
+      "_id": 1,
+      "name": "React Native",
+      "avatar": "https://www.fullstacklabs.co/img/developersReact/react_big-7648094b.png"
+    }
+  },
+  {
+    "_id": 3,
+    "text": "wassup",
+    "createdAt": "2016-03-13T13:37:27+00:00",
+    "user": {
+      "_id": 2,
+      "name": "React Native",
+      "avatar": "https://www.fullstacklabs.co/img/developersReact/react_big-7648094b.png"
+    }
+  }
+]
