@@ -95,6 +95,14 @@ export default class LoginPage extends React.Component {
                 SIGN UP
               </Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={this.handleLogin}
+            >
+              <Text style={styles.buttonText}>
+                CONTINUE AS GUEST
+              </Text>
+            </TouchableOpacity>
           </View>
 
         </View>
