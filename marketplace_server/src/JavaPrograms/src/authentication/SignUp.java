@@ -33,7 +33,7 @@ public class SignUp {
 			json += "\n \"firstName\": \"" + args[2] + "\",";
 			json += "\n \"lastName\": \"" + args[3] + "\",";
 			json += "\n \"bio\": \"Add a bio!\"\n}";
-			System.out.println(json);
+			//System.out.println(json);
 			rs = ps.executeQuery();
 			if (rs.next())
 			{
