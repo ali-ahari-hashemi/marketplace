@@ -7,6 +7,7 @@ import SocketIOClient from 'socket.io-client';
 export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
+    this.handleUpdateBio = this.handleUpdateBio.bind(this);
     this.state = {
       text: 'Your Bio Goes Here...',
       user: null
@@ -21,6 +22,11 @@ export default class UserPage extends React.Component {
 
   componentWillUnmount() {
     this.socket.disconnect();
+  }
+  
+  handleUpdateBio() {
+    this.state.user.bio = this.state.text
+    this.socket.emit("updateBio", {userID: this.props.userID, user: this.state.user})
   }
 
   render(){
@@ -45,7 +51,9 @@ export default class UserPage extends React.Component {
         </View>
 
         <View style={styles.buttonWrapper}>
-          <TouchableOpacity style={styles.buttonContainer}>
+          <TouchableOpacity
+            onPress={this.handleUpdateBio}
+            style={styles.buttonContainer}>
             <Text style={styles.buttonText}> UPDATE BIO </Text>
           </TouchableOpacity>
         </View>

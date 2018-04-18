@@ -17,21 +17,46 @@ io.on('connection', (socket) => {
 
   // Validate login
   socket.on("validateLogin", (data) => {
-    // This is where java program to validate login will be called
-    console.log(data.username);
-    console.log(data.password);
+    var output = jre.spawnSync(
+      ['./lib/Login.jar'],
+      'authentication.Login',
+      [data.username, data.password],
+      { encoding: 'utf8' }
+    ).stdout.trim();
+    console.log(output);
+    var userID = parseInt(output);
 
-    // Send user ID to client if valid
-    const validUserLogin = true; // TODO set this based on java program
-    const userID = 1; // TODO set this based on java program
+    if (userID != -1) { socket.emit("validUser", userID); }
+    else { socket.emit("invalidUser")}
+  });
 
-    if (validUserLogin) { socket.emit("validUser", userID); }
+  // Validate Signup
+  socket.on("validateSignup", (data) => {
+    console.log(data);
+    var output = jre.spawnSync(
+      ['./lib/SignUp.jar'],
+      'authentication.SignUp',
+      [data.username, data.password],
+      { encoding: 'utf8' }
+    ).stdout.trim();
+    console.log(output);
+    var userID = parseInt(output);
+
+    if (userID != -1) { socket.emit("validUser", userID); }
     else { socket.emit("invalidUser")}
   });
 
   // Get user object associated with given userID
   socket.on("getUser", (userID) => {
-    const user = require('./testFiles/user.json'); // TODO set this based on java program
+    console.log(userID);
+    var output = jre.spawnSync(
+      ['./lib/GetUser.jar'],
+      'user.GetUser',
+      [userID],
+      { encoding: 'utf8' }
+    ).stdout.trim();
+    console.log(output);
+    const user = JSON.parse(output);
     socket.emit("sendUser", user);
   });
 
@@ -49,7 +74,7 @@ io.on('connection', (socket) => {
       [userID],
       { encoding: 'utf8' }
     ).stdout.trim();
-    console.log(output);
+    //console.log(output);
 
     const cards = JSON.parse(output);
     socket.emit("sendCards", cards);
@@ -71,6 +96,22 @@ io.on('connection', (socket) => {
   socket.on("sendMessage", (data) => {
     console.log(data.userID1, data.userID2, data.message);
     // TODO sendMessage java program call here to update messages for both users on database
+  });
+
+  // Update bio
+  socket.on("updateBio", (data) => {
+    var userJsonString = JSON.stringify(data.user);
+    console.log(userJsonString);
+    var userJsonStringForInput = userJsonString.replace(/"/g, '\"');
+
+    var output = jre.spawnSync(
+      ['./lib/UpdateBio.jar'],
+      'user.UpdateBio',
+      [data.userID, userJsonStringForInput],
+      { encoding: 'utf8' }
+    ).stderr.trim();
+    console.log(output);
+
   });
 
   // Socket Disconnected

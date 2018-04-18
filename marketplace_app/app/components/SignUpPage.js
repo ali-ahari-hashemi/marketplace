@@ -1,7 +1,33 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, AppRegistry, TextInput, TouchableOpacity} from 'react-native';
+import SocketIOClient from 'socket.io-client';
 
 export default class SignUpPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      confirmPassword: '',
+    };
+    this.handleSignup = this.handleSignup.bind(this);
+    this.socket = SocketIOClient(this.props.screenProps.host);
+  }
+
+  handleSignup() {
+      this.socket.emit("validateSignup", this.state);
+      this.socket.on("validUser", (userID) => {
+        this.props.navigation.navigate('Main', {userID: userID});
+      });
+      this.socket.on("invalidUser", () => {
+        // TODO
+      });
+  }
+
+  componentWillUnmount() {
+    this.socket.disconnect();
+  }
+  
   render () {
     return (
       <View style={styles.container}>
@@ -9,12 +35,12 @@ export default class SignUpPage extends React.Component {
           <Text style={styles.title}> Sign Up!</Text>
         </View>
 
-
         <View style={styles.formContainer}>
             <TextInput
               placeholder="username"
               placeholderTextColor="rgba(255,255,255,0.7)"
               returnKeyType="next"
+              onChangeText={(username) => this.setState({ username })}
               onSubmitEditing={() => this.passwordInput.focus()}
               autoCapitalize="none"
               autoCorrect={false}
@@ -24,6 +50,7 @@ export default class SignUpPage extends React.Component {
               placeholder="new password"
               placeholderTextColor="rgba(255,255,255,0.7)"
               returnKeyType="next"
+              onChangeText={(password) => this.setState({ password })}
               onSubmitEditing={() => this.passwordInput2.focus()}
               secureTextEntry
               style={styles.input}
@@ -35,11 +62,15 @@ export default class SignUpPage extends React.Component {
               returnKeyType="done"
               secureTextEntry
               style={styles.input}
+              onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
               ref={(input) => this.passwordInput2 = input}
               />
 
             <View style={styles.buttonWrapper}>
-              <TouchableOpacity style={styles.buttonContainer}>
+              <TouchableOpacity 
+                style={styles.buttonContainer}
+                onPress={this.handleSignup}
+              >
                 <Text style={styles.buttonText}> SIGN UP </Text>
               </TouchableOpacity>
             </View>
