@@ -29,18 +29,20 @@ public class AddCard {
 
 			ps.setString(1, args[0]);
 			
-			//0-userID
+			//0-userID, 1-username, 2-price, 3-distance (add miles), 4- url, 5+ itemforSale
 			String json = "{ \n \"cardID\": \"" + cardID + "\",";
-			json += "\n \"itemForSale\": \"" + args[1] + "\",";
-			json += "\n \"firstName\": \"" + args[2] + "\",";
-			json += "\n \"lastname\": \"" + args[3] + "\",";
-			json += "\n \"Bio\": \"";
-			for (int i = 4; i < args.length; i++)
+			String item = "";
+			for (int i = 5; i < args.length; i++)
 			{
-				//System.out.println(args[i]);
-				json += args[i] + " ";
+				item += args[i] + " ";
 			}
-			json += "\"\n}";
+			json += "\n \"itemForSale\": \"" + item + "\",";
+			json += "\n \"userName\": \"" + args[1] + "\",";
+			json += "\n \"userID\": \"" + args[0] + "\",";
+			json += "\n \"distance\": \"" + args[3] + " miles" + "\",";
+			json += "\n \"price\": \"$" + args[2] +"\",";
+			json += "\n \"imageURL\": \"" + args[4] + "\"";
+			json += "\n}";
 			//System.out.println(json);
 			ps.setObject(2, json);
 			ps.executeUpdate();
