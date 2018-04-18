@@ -41,6 +41,15 @@ export default class UserPage extends React.Component {
           />
         </View>
 
+        <View style={{paddingTop: 10}}>
+        </View>
+
+        <View style={styles.buttonWrapper}>
+          <TouchableOpacity style={styles.buttonContainer}>
+            <Text style={styles.buttonText}> UPDATE BIO </Text>
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.formContainer}>
           <Text style={styles.title}> Update Password </Text>
             <TextInput
@@ -72,7 +81,7 @@ export default class UserPage extends React.Component {
 
             <View style={styles.buttonWrapper}>
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text style={styles.buttonText}> UPDATE </Text>
+                <Text style={styles.buttonText}> UPDATE PASSWORD </Text>
               </TouchableOpacity>
             </View>
         </View>
