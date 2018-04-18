@@ -33,8 +33,8 @@ public class UpdateBio {
 				json += args[i] + " ";
 			}
 			json += "\"\n}";*/
-			ps.setObject(1, json);
 			System.out.println(json);
+			ps.setObject(1, json);
 			int user = Integer.parseInt(args[0]);
 			ps.setInt(2, user);
 			ps.executeUpdate();
