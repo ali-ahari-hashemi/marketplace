@@ -12,13 +12,37 @@ public class AddCard {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		try {
+		try {//insert, query, update
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=root&useSSL=false");
+			ps = conn.prepareStatement("Select count(cardID) as count from Cards where 1=1");
+			rs = ps.executeQuery();
+			int cardID = -1;
+
+			if (rs.next())
+			{
+				cardID = rs.getInt("count") + 1;
+				//System.out.println(cardID);
+			}
 			ps = conn.prepareStatement("Insert into Cards (userID, itemJson) values " +
 					"(?, ?)");
+
 			ps.setString(1, args[0]);
-			ps.setString(2, args[1]);
+			
+			//0-userID
+			String json = "{ \n \"cardID\": \"" + cardID + "\",";
+			json += "\n \"itemForSale\": \"" + args[1] + "\",";
+			json += "\n \"firstName\": \"" + args[2] + "\",";
+			json += "\n \"lastname\": \"" + args[3] + "\",";
+			json += "\n \"Bio\": \"";
+			for (int i = 4; i < args.length; i++)
+			{
+				//System.out.println(args[i]);
+				json += args[i] + " ";
+			}
+			json += "\"\n}";
+			//System.out.println(json);
+			ps.setObject(2, json);
 			ps.executeUpdate();
 			
 		}
