@@ -16,7 +16,7 @@ export default class UserPage extends React.Component {
   componentWillMount() {
     this.socket = SocketIOClient(this.props.host);
     this.socket.emit("getUser", this.props.userID);
-    this.socket.on("sendUser", (data) => this.setState({user: data}));
+    this.socket.on("sendUser", (data) => this.setState({user: data, text: data.bio}));
   }
 
   componentWillUnmount() {
@@ -31,7 +31,7 @@ export default class UserPage extends React.Component {
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View style={styles.logoContainer}>
           <Image style={styles.logo}/>
-          <Text style={styles.title}> FirstName LastName </Text>
+          <Text style={styles.title}> {this.state.user.firstName} {this.state.user.lastName} </Text>
           <TextInput style={styles.biobox}
             style={{borderRadius:10, color:'#FFF', backgroundColor: 'rgba(255,255,255,0.7)', fontFamily: 'Helvetica-Light', fontSize: 17, textAlign: 'center', width: 300, height: 85, borderColor: 'powderblue', borderWidth: 1.5}}
             multiline = {true}

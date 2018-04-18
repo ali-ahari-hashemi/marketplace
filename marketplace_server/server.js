@@ -6,6 +6,7 @@ var app = express();
 var server = http.Server(app);
 var io = socketio(server);
 
+var jre = require('node-jre');
 const port = 8080;
 
 server.listen(port, () => console.log('listening on *:8080'));
@@ -20,6 +21,7 @@ io.on('connection', (socket) => {
     console.log(data.username);
     console.log(data.password);
 
+<<<<<<< HEAD
     var exec = require('child_process').exec, child;
     child = exec('java -jar ./lib/test.jar',
       function (error, stdout, stderr){
@@ -30,6 +32,8 @@ io.on('connection', (socket) => {
         }
     });
 
+=======
+>>>>>>> ali
     // Send user ID to client if valid
     const validUserLogin = true; // TODO set this based on java program
     const userID = 1; // TODO set this based on java program
@@ -52,7 +56,15 @@ io.on('connection', (socket) => {
 
   // Get cards for client
   socket.on("getCards", (userID) => {
-    const cards = require('./testFiles/cards.json'); // TODO set this based on java program
+    var output = jre.spawnSync(
+      ['./lib/GetCards.jar'],
+      'cards.GetCards',
+      [userID],
+      { encoding: 'utf8' }
+    ).stdout.trim();
+    console.log(output);
+
+    const cards = JSON.parse(output);
     socket.emit("sendCards", cards);
   });
 
