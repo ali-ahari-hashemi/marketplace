@@ -6,6 +6,7 @@ import MainPageContainer from './MainPageContainer';
 import UserPageContainer from './UserPageContainer';
 import MessagePageContainer from './MessagePageContainer';
 import ConversationPageContainer from './ConversationPageContainer';
+import AddNewItemPage from '../components/AddNewItemPage';
 import { SwitchNavigator } from 'react-navigation';
 
 const mapNavigationStateParamsToProps = (SomeComponent) => {
@@ -38,6 +39,9 @@ const Screens = SwitchNavigator(
     MessagePage: {
       screen: mapNavigationStateParamsToProps(MessagePageContainer),
     },
+    AddNewItemPage: {
+      screen: mapNavigationStateParamsToProps(AddNewItemPage),
+    }
   },
   {
     initialRouteName: 'Login',
