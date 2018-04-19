@@ -86,6 +86,18 @@ io.on('connection', (socket) => {
     socket.emit("sendCards", cards);
   });
 
+  socket.on("swipe", (data) => {
+    console.log(userID);
+    var output = jre.spawnSync(
+      ['./lib/Swipe.jar'],
+      'cards.Swipe',
+      [data.userID1, data.userID2, data.cardID, data.swipeDirection],
+      { encoding: 'utf8' }
+    ).stdout.trim();
+    const cards = JSON.parse(output);
+    socket.emit("sendCards", cards);
+  });
+
   // Get conversations of client
   socket.on("getConversations", (userID) => {
     const conversations = require('./testFiles/conversations.json'); // TODO set this based on java program
@@ -100,15 +112,15 @@ io.on('connection', (socket) => {
 
   // Client sends message to other user. Data in the form {userID1, userID2, message}
   socket.on("sendMessage", (data) => {
-    console.log(data.userID1, data.userID2, data.message);
+    console.log(data);
+    //console.log(data.userID1, data.userID2, data.message);
     var output = jre.spawnSync(
       ['./lib/SendMessage.jar'],
       'messages.SendMessage',
-      [userID],
+      [data.userID1, data.userID2, data.cardID, data.timestamp, data.message],
       { encoding: 'utf8' }
-    ).stdout.trim();
-    const cards = JSON.parse(output);
-    socket.emit("sendCards", cards);
+    ).stderr.trim();
+    console.log(output);
   });
 
   // Update bio
