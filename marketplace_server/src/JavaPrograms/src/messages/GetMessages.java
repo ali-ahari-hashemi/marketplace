@@ -28,6 +28,8 @@ public class GetMessages {
 			}
 			if (jsontext == null) {
 				jsontext = "";
+			}else {
+				jsontext = jsontext.substring(0,jsontext.length() - 1);
 			}
 			 jsontext = "[" + jsontext + "]";
 			
