@@ -19,7 +19,6 @@ public class Swipe {
 			int user2_id = Integer.parseInt(args[1]);//card owner
 			int card_id = Integer.parseInt(args[2]);
 			int swipe = Integer.parseInt(args[3]);
-			String cardName = args[4];
 			//add card/user_id to swipedcards database
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=root&useSSL=false");
@@ -31,17 +30,15 @@ public class Swipe {
 			if (swipe == 1) { //if right swipe
 				try {
 					//create two inverse conversations about item with item ID and item name
-					ps2 = conn.prepareStatement(" INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (?, ?, ?, ?);"
-							+ " INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (?, ?, ?, ?)");
+					ps2 = conn.prepareStatement(" INSERT INTO Conversations (user_id_1, user_id_2, cardID) values (?, ?, ?);"
+							+ " INSERT INTO Conversations (user_id_1, user_id_2, cardID) values (?, ?, ?)");
 					ps2.setInt(1, user_id);
 					ps2.setInt(2, user2_id);
 					ps2.setInt(3, card_id);
-					ps2.setString(4, cardName);
 					
-					ps2.setInt(5, user_id);
-					ps2.setInt(6, user2_id);
-					ps2.setInt(7, card_id);
-					ps2.setString(8, cardName);
+					ps2.setInt(4, user_id);
+					ps2.setInt(5, user2_id);
+					ps2.setInt(6, card_id);
 					
 					ps2.executeUpdate();
 				}catch (SQLException e)
