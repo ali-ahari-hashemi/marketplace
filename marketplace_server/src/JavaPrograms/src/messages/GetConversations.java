@@ -31,8 +31,8 @@ public class GetConversations {
 				String username = rs.getString("username");
 				int id = rs.getInt("user_id_2");
 				Object itemJson = rs.getObject("itemJson");
-				jsontext += "{\"user2ID\":" + id;
-				jsontext += "\"username\":" + username;
+				jsontext += "{\"user2ID\":" + id + ",";
+				jsontext += "\"username\":" + username + ",";
 				jsontext += "\"card\":";
 				jsontext += itemJson;
 				jsontext += "},";
