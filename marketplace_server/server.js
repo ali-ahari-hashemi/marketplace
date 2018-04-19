@@ -67,7 +67,7 @@ io.on('connection', (socket) => {
     var output = jre.spawnSync(
       ['./lib/AddCard.jar'],
       'cards.AddCard',
-      [data.userID, 'test', data.card.price, '0', data.card.imageURL, data.card.itemName],
+      [data.userID, data.card.price, '0', data.card.imageURL, data.card.itemName],
       { encoding: 'utf8' }
     ).stderr.trim();
     console.log(output);
@@ -101,7 +101,14 @@ io.on('connection', (socket) => {
   // Client sends message to other user. Data in the form {userID1, userID2, message}
   socket.on("sendMessage", (data) => {
     console.log(data.userID1, data.userID2, data.message);
-    // TODO sendMessage java program call here to update messages for both users on database
+    var output = jre.spawnSync(
+      ['./lib/SendMessage.jar'],
+      'messages.SendMessage',
+      [userID],
+      { encoding: 'utf8' }
+    ).stdout.trim();
+    const cards = JSON.parse(output);
+    socket.emit("sendCards", cards);
   });
 
   // Update bio

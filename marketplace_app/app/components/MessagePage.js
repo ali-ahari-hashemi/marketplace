@@ -32,7 +32,7 @@ export default class MessagePage extends React.Component {
   }
 
   onSend(messages = []) {
-    this.socket.emit("sendMessage", {userID1: this.props.userID, userID2: this.props.userID2, message: messages[0].text});
+    this.socket.emit("sendMessage", {userID1: this.props.userID, userID2: this.props.userID2, cardID: this.props.cardID, message: messages[0].text});
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }))

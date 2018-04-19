@@ -27,6 +27,8 @@ export default class MessagePageContainer extends React.Component {
           host={this.props.screenProps.host}
           userID={this.props.userID}
           userID2={this.props.userID2}
+          cardID={this.props.cardID}
+          cardname={this.props.cardname}
         />
 
       </Container>

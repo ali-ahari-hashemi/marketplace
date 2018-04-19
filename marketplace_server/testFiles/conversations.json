@@ -1,14 +1,8 @@
 [
   {
-    "userID2": 2,
-    "username": "Allison"
-  },
-  {
-    "userID2": 3,
-    "username": "Adi"
-  },
-  {
-    "userID2": 4,
-    "username": "Andrew"
+     "user2ID": 4,
+     "username": "blah",
+     "cardID": 4,
+     "cardName": "Item"
   }
 ]

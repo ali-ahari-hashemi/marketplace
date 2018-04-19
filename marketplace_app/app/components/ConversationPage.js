@@ -37,14 +37,14 @@ class ConversationPage extends React.Component {
             data={this.state.conversations}
             renderItem={({ item }) => (
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('MessagePage', {userID: this.props.userID, userID2: item.userID2})}
+                onPress={() => this.props.navigation.navigate('MessagePage', {userID: this.props.userID, userID2: item.userID2, cardID: item.cardID, cardname: item.cardName})}
               >
                 <ListItem
-                  title={item.username}
+                  title={item.cardName}
                 />
               </TouchableOpacity>
             )}
-            keyExtractor={item => item.userID2}
+            //keyExtractor={item => item.userID2}
           />
         </List>
       </View>
