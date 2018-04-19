@@ -20,7 +20,6 @@ class ConversationPage extends React.Component {
     this.socket.emit("getConversations", this.props.userID);
     this.socket.on("sendConversations", (data) => {
       this.setState({conversations: data})
-      console.log(this.state);
     });
   }
 

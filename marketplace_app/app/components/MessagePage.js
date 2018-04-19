@@ -10,7 +10,6 @@ export default class MessagePage extends React.Component {
     super(props);
     this.onSend = this.onSend.bind(this);
     this.state = { messages: null }
-    console.log(props)
   }
 
   componentWillMount() {
@@ -23,7 +22,6 @@ export default class MessagePage extends React.Component {
     interval = setInterval(() => {
       this.socket.emit("getMessages", {userID1: this.props.userID, userID2: this.props.userID2});
       this.socket.on("sendMessages", (data) => this.setState({messages: data}));
-      console.log(this.state.messages);
     }, 1000);
   }
 
