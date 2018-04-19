@@ -87,15 +87,19 @@ io.on('connection', (socket) => {
   });
 
   socket.on("swipe", (data) => {
-    console.log(userID);
+    console.log(data.userID2.replace(/'/g,''));
+    var newuserID2 = data.userID2.replace(/'/g,'');
+    var newcardID = data.cardID.replace(/'/g,'');
+    console.log(data.userID1, newuserID2, newcardID, data.swipeDirection);
+
     var output = jre.spawnSync(
       ['./lib/Swipe.jar'],
       'cards.Swipe',
-      [data.userID1, data.userID2, data.cardID, data.swipeDirection],
+      [data.userID1, newuserID2, newcardID, data.swipeDirection],
       { encoding: 'utf8' }
     ).stdout.trim();
-    const cards = JSON.parse(output);
-    socket.emit("sendCards", cards);
+    console.log(output);
+
   });
 
   // Get conversations of client
