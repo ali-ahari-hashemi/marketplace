@@ -32,7 +32,7 @@ public class GetConversations {
 				int id = rs.getInt("user_id_2");
 				Object itemJson = rs.getObject("itemJson");
 				jsontext += "{\"user2ID\":" + id + ",";
-				jsontext += "\"username\":" + username + ",";
+				jsontext += "\"username\":\"" + username + "\",";
 				jsontext += "\"card\":";
 				jsontext += itemJson;
 				jsontext += "},";
