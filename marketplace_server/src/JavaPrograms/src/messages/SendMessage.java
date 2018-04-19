@@ -75,7 +75,7 @@ public class SendMessage {
 			jsontext1 += "\"text\": \"" + message + "\",";
 			jsontext1 += "\"createdAt\": \""+timestamp+"\",";
 			jsontext1 += "\"user\": {";
-			jsontext1 +=      "\"_id\": " + 1;
+			jsontext1 +=      "\"_id\": " + 1 + ",";
 			jsontext1 +=     "\"name\": \"" + name + "\"";
 			jsontext1 +=    "}";
 			jsontext1 +=  "},";
@@ -86,7 +86,7 @@ public class SendMessage {
 			jsontext2 += "\"text\": \"" + message + "\",";
 			jsontext2 += "\"createdAt\": \""+timestamp+"\",";
 			jsontext2 += "\"user\": {";
-			jsontext2 +=      "\"_id\": " + 2;
+			jsontext2 +=      "\"_id\": " + 2 + ",";
 			jsontext2 +=     "\"name\": \"" + name + "\"";
 			jsontext2 +=    "}";
 			jsontext2 +=  "},";
