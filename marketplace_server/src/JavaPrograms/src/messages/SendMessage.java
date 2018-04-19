@@ -17,7 +17,7 @@ public class SendMessage {
 		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=alskdjfhg&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=root&useSSL=false");
 			
 			int new_message_id = 0;
 			String name = "";
