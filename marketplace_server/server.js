@@ -87,15 +87,15 @@ io.on('connection', (socket) => {
   });
 
   socket.on("swipe", (data) => {
-    console.log(data.userID2.replace(/'/g,''));
-    var newuserID2 = data.userID2.replace(/'/g,'');
-    var newcardID = data.cardID.replace(/'/g,'');
-    console.log(data.userID1, newuserID2, newcardID, data.swipeDirection);
+    // console.log(data.userID2.replace(/'/g,''));
+    // var newuserID2 = data.userID2.replace(/'/g,'');
+    // var newcardID = data.cardID.replace(/'/g,'');
+    console.log(data.userID1, data.userID2, data.cardID, data.swipeDirection);
 
     var output = jre.spawnSync(
       ['./lib/Swipe.jar'],
       'cards.Swipe',
-      [data.userID1, newuserID2, newcardID, data.swipeDirection],
+      [data.userID1, data.userID2, data.cardID, data.swipeDirection],
       { encoding: 'utf8' }
     ).stderr.trim();
     console.log(output);
@@ -106,8 +106,8 @@ io.on('connection', (socket) => {
   socket.on("getConversations", (userID) => {
     //const conversations = require('./testFiles/conversations.json'); // TODO set this based on java program
     var output = jre.spawnSync(
-      ['./lib/getConversations.jar'],
-      'cards.Swipe',
+      ['./lib/GetConversations.jar'],
+      'messages.GetConversations',
       [userID],
       { encoding: 'utf8' }
     ).stdout.trim();
@@ -118,7 +118,16 @@ io.on('connection', (socket) => {
 
   // Get messages for the given userID data: {userID1, userID2}
   socket.on("getMessages", (data) => {
-    const messages = require('./testFiles/messages.json'); // TODO set this based on java program
+    //const messages = require('./testFiles/messages.json'); // TODO set this based on java program
+    var output = jre.spawnSync(
+      ['./lib/GetMessages.jar'],
+      'messages.GetMessages',
+      [data.userID1, data.userID2],
+      { encoding: 'utf8' }
+    ).stdout.trim();
+    //console.log(output);
+    var messages = JSON.parse(output);
+    //reversed = messages.reverse();
     socket.emit("sendMessages", messages);
   });
 
