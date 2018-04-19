@@ -75,26 +75,36 @@ INSERT INTO User (username, password, userJson) values
     Insert into Cards (itemJson, userID) values 
     ('{
     "itemForSale": "Car",
-    "userName": "jessica",
+    "userName": "Chan",
     "userID": "3",
-    "distance": "3 Miles",
+    "distance": "3 miles",
     "price": "$5,000",
     "imageURL": "https://i.imgur.com/nudswXu.jpg"
   }', 3), ('{
     "itemForSale": "Unused Iphone X",
-    "userName": "bob",
+    "userName": "Heermann",
     "userID": "1",
-    "distance": ".5 Miles",
+    "distance": ".5 miles",
     "price": "$500",
     "imageURL": "https://i.imgur.com/zbh721x.jpg"
   }', 1), ('{
     "itemForSale": "PS4",
-    "userName": "jeff",
+    "userName": "Shah",
     "userID": "2",
     "distance": "10 miles",
     "price": "$200",
     "imageURL": "https://i.imgur.com/ILlxG2j.jpg"
-  }', 2) ;
+  }', 2),
+  ('{
+    "itemForSale": "Chair",
+    "userName": "Hashemi",
+    "userID": "4",
+    "distance": "1 miles",
+    "price": "$1",
+    "imageURL": "https://i.imgur.com/aWkpX3W.png"
+  }', 4)
+  
+  ;
     
  
 	
