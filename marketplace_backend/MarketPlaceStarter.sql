@@ -102,6 +102,70 @@ INSERT INTO User (username, password, userJson) values
     "distance": "1 miles",
     "price": "$1",
     "imageURL": "https://i.imgur.com/aWkpX3W.png"
+  }', 4),
+  ('{
+    "itemForSale": "Degree",
+    "userName": "Chan",
+    "userID": "3",
+    "distance": "2 miles",
+    "price": "$300,000",
+    "imageURL": "http://www.fakediploma58.com/data/attachment/upload/Image/20160330073651102.jpg"
+  }', 3),
+  ('{
+    "itemForSale": "Skateboard",
+    "userName": "Heermann",
+    "userID": "1",
+    "distance": "3 miles",
+    "price": "$50",
+    "imageURL": "https://cdn.skatepro.com/product/440/enuff-pyro-ii-kids-skateboard-nl.jpg"
+  }', 1),
+  ('{
+    "itemForSale": "20 dollars",
+    "userName": "Shah",
+    "userID": "2",
+    "distance": "7 miles",
+    "price": "$21",
+    "imageURL": "https://www.leftovercurrency.com/wp-content/uploads/2016/11/20-american-dollars-banknote-obverse-1-768x322.jpg"
+  }', 2),
+  ('{
+    "itemForSale": "Laptop",
+    "userName": "Hashemi",
+    "userID": "4",
+    "distance": "3 miles",
+    "price": "$200",
+    "imageURL": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05530001.png"
+  }', 4),
+  ('{
+    "itemForSale": "Couch",
+    "userName": "Chan",
+    "userID": "3",
+    "distance": "20 miles",
+    "price": "$125",
+    "imageURL": "https://cdn-images.article.com/products/SKU312E/2890x1500/image29451.jpg"
+  }', 3),
+  ('{
+    "itemForSale": "House",
+    "userName": "Shah",
+    "userID": "2",
+    "distance": "15 miles",
+    "price": "$500,000",
+    "imageURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Ranch_style_home_in_Salinas%2C_California.JPG/440px-Ranch_style_home_in_Salinas%2C_California.JPG"
+  }', 2),
+  ('{
+    "itemForSale": "A in 201",
+    "userName": "Heermann",
+    "userID": "1",
+    "distance": "0 miles",
+    "price": "$1,000,000",
+    "imageURL": "http://mediad.publicbroadcasting.net/p/wual/files/styles/medium/public/201301/MH900439513.JPG"
+  }', 1),
+  ('{
+    "itemForSale": "Sweatshirt",
+    "userName": "Hashemi",
+    "userID": "4",
+    "distance": "2 miles",
+    "price": "$40",
+    "imageURL": "http://images.footballfanatics.com/FFImage/thumb.aspx?i=/productImages/_3055000/ff_3055604_full.jpg"
   }', 4)
   
   ;
