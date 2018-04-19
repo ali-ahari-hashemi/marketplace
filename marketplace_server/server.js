@@ -23,7 +23,6 @@ io.on('connection', (socket) => {
       [data.username, data.password],
       { encoding: 'utf8' }
     ).stdout.trim();
-    console.log(output);
     var userID = parseInt(output);
 
     if (userID != -1) { socket.emit("validUser", userID); }
@@ -32,14 +31,12 @@ io.on('connection', (socket) => {
 
   // Validate Signup
   socket.on("validateSignup", (data) => {
-    console.log(data);
     var output = jre.spawnSync(
       ['./lib/SignUp.jar'],
       'authentication.SignUp',
       [data.username, data.password, data.firstname, data.lastname],
       { encoding: 'utf8' }
     ).stdout.trim();
-    console.log(output);
     var userID = parseInt(output);
 
     if (userID != -1) { socket.emit("validUser", userID); }
@@ -55,11 +52,9 @@ io.on('connection', (socket) => {
       [userID],
       { encoding: 'utf8' }
     ).stdout.trim();
-    console.log(output);
     const user = JSON.parse(output);
     socket.emit("sendUser", user);
   });
-
 
   // Add Card
   socket.on("addCard", (data) => {
@@ -70,12 +65,10 @@ io.on('connection', (socket) => {
       [data.userID, data.card.price, '0', data.card.imageURL, data.card.itemName],
       { encoding: 'utf8' }
     ).stderr.trim();
-    console.log(output);
   });
 
   // Get cards for client
   socket.on("getCards", (userID) => {
-    console.log(userID);
     var output = jre.spawnSync(
       ['./lib/GetCards.jar'],
       'cards.GetCards',
@@ -87,38 +80,29 @@ io.on('connection', (socket) => {
   });
 
   socket.on("swipe", (data) => {
-    // console.log(data.userID2.replace(/'/g,''));
-    // var newuserID2 = data.userID2.replace(/'/g,'');
-    // var newcardID = data.cardID.replace(/'/g,'');
-    console.log(data.userID1, data.userID2, data.cardID, data.swipeDirection);
-
     var output = jre.spawnSync(
       ['./lib/Swipe.jar'],
       'cards.Swipe',
       [data.userID1, data.userID2, data.cardID, data.swipeDirection],
       { encoding: 'utf8' }
     ).stderr.trim();
-    console.log(output);
-
   });
 
   // Get conversations of client
   socket.on("getConversations", (userID) => {
-    //const conversations = require('./testFiles/conversations.json'); // TODO set this based on java program
     var output = jre.spawnSync(
       ['./lib/GetConversations.jar'],
       'messages.GetConversations',
       [userID],
       { encoding: 'utf8' }
     ).stdout.trim();
-    console.log(output);
+    //console.log(output);
     const conversations = JSON.parse(output);
     socket.emit("sendConversations", conversations);
   });
 
-  // Get messages for the given userID data: {userID1, userID2}
+  // Get messages for the given userID
   socket.on("getMessages", (data) => {
-    //const messages = require('./testFiles/messages.json'); // TODO set this based on java program
     var output = jre.spawnSync(
       ['./lib/GetMessages.jar'],
       'messages.GetMessages',
@@ -127,36 +111,31 @@ io.on('connection', (socket) => {
     ).stdout.trim();
     //console.log(output);
     var messages = JSON.parse(output);
-    //reversed = messages.reverse();
     socket.emit("sendMessages", messages);
   });
 
   // Client sends message to other user. Data in the form {userID1, userID2, message}
   socket.on("sendMessage", (data) => {
-    console.log(data);
-    //console.log(data.userID1, data.userID2, data.message);
     var output = jre.spawnSync(
       ['./lib/SendMessage.jar'],
       'messages.SendMessage',
       [data.userID1, data.userID2, data.cardID, data.timestamp, data.message],
       { encoding: 'utf8' }
     ).stderr.trim();
-    console.log(output);
+    //console.log(output);
   });
 
   // Update bio
   socket.on("updateBio", (data) => {
     var userJsonString = JSON.stringify(data.user);
-    console.log(userJsonString);
     var userJsonStringForInput = userJsonString.replace(/"/g, '\"');
-
     var output = jre.spawnSync(
       ['./lib/UpdateBio.jar'],
       'user.UpdateBio',
       [data.userID, userJsonStringForInput],
       { encoding: 'utf8' }
     ).stdout.trim();
-    console.log(output);
+    //console.log(output);
   });
 
   // Update password
@@ -167,7 +146,7 @@ io.on('connection', (socket) => {
       [data.userID, data.oldPassword, data.newPassword],
       { encoding: 'utf8' }
     ).stdout.trim();
-    console.log(output);
+    //console.log(output);
     var result = parseInt(output);
     if (result == 1) { socket.emit("validUpdatePassword"); }
     else { socket.emit("invalidUpdatePassword"); }
