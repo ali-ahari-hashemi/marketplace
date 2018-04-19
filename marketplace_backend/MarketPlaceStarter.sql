@@ -43,7 +43,7 @@ Create Table Conversations (
 
     INSERT INTO User (username, password) values ('Heermann', 'Andrew'), ('Shah', 'Aditya' ), ('Chan', 'Allison'), ('Hashemi', 'Ali');
 
-    Insert into Cards (itemJson, time, userID) values
+    Insert into Cards (itemJson, userID) values 
     ('{
     "itemForSale": "Car",
     "userName": "jessica",
@@ -51,30 +51,70 @@ Create Table Conversations (
     "distance": "3 Miles",
     "price": "$5,000",
     "imageURL": "https://i.imgur.com/nudswXu.jpg"
-  }', current_timestamp(), 2), ('{
+  }', 3), ('{
     "itemForSale": "Unused Iphone X",
     "userName": "bob",
     "userID": "1",
     "distance": ".5 Miles",
     "price": "$500",
     "imageURL": "https://i.imgur.com/zbh721x.jpg"
-  }',current_timestamp(), 3), ('{
+  }', 1), ('{
     "itemForSale": "PS4",
     "userName": "jeff",
     "userID": "2",
     "distance": "10 miles",
     "price": "$200",
     "imageURL": "https://i.imgur.com/ILlxG2j.jpg"
-  }', current_timestamp(), 1) ;
-
-    INSERT INTO SwipedCards (usersID, cardID) values (1, 1);
+  }', 2) ;
+    
+ 
+	INSERT INTO User (username, password, userJson) values 
+    ('Heermann', 'Andrew', '{
+    "userID": "1",
+    "username":"Heermann",
+    "firstName":"Andrew",
+    "lastName":"Heermann",
+    "bio":"Hello World"
+    }'), 
+    ('Shah', 'Aditya', '{
+    "userID": "2",
+    "username":"Shah",
+    "firstName":"Adi",
+    "lastName":"Shah",
+    "bio":"Hello World"
+    }' ), 
+    ('Chan', 'Allison', '{
+    "userID": "3",
+    "username":"Chan",
+    "firstName":"Allison",
+    "lastName":"Chan",
+    "bio":"Hello World"
+    }'), 
+    ('Hashemi', 'Ali', '{
+    "userID": "4",
+    "username":"Hashemi",
+    "firstName":"Ali",
+    "lastName":"Hashemi",
+    "bio":"Hello World"
+    }');
+    
 
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 3, 1, 'Car');
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (3, 1, 1, 'Car');
 
+<<<<<<< HEAD
+    INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 3, 1, 'Car');
+    INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (3, 1, 1, 'Car');
+
+=======
+>>>>>>> master
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 2, 3, 'PS4');
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (2, 1, 3, 'PS4');
     
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (2, 1, 2, 'Unused Iphone X');
+<<<<<<< HEAD
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 2, 2, 'Unused Iphone X');
 
+=======
+    INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 2, 2, 'Unused Iphone X');
+>>>>>>> master

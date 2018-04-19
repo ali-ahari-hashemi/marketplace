@@ -15,6 +15,7 @@ export default class LoginPage extends React.Component {
       password: '',
     };
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
     this.socket = SocketIOClient(this.props.screenProps.host);
   }
 
@@ -26,6 +27,10 @@ export default class LoginPage extends React.Component {
       this.socket.on("invalidUser", () => {
         // TODO
       });
+  }
+
+  handleSignup() {
+      this.props.navigation.navigate('Signup');
   }
 
   componentWillUnmount() {
@@ -40,7 +45,8 @@ export default class LoginPage extends React.Component {
             style={styles.logo}
             source={require('../Images/marketplaceLogo.png')}
           />
-          <Text style={styles.title}> Welcome to the Marketplace!</Text>
+          <Text style={styles.title}> Welcome to the</Text>
+          <Text style={styles.title1}> Marketplace! </Text>
         </View>
 
         <View style={styles.formContainer}>
@@ -77,10 +83,24 @@ export default class LoginPage extends React.Component {
               style={styles.buttonContainer}
               onPress={this.handleLogin}
             >
-              <Text
-                style={styles.buttonText}
-              >
+              <Text style={styles.buttonText}>
                 LOGIN
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={this.handleSignup}
+            >
+              <Text style={styles.buttonText}>
+                SIGN UP
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={this.handleLogin}
+            >
+              <Text style={styles.buttonText}>
+                CONTINUE AS GUEST
               </Text>
             </TouchableOpacity>
           </View>
@@ -106,11 +126,20 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: 160,
     textAlign: 'center',
-    opacity: 5
+    opacity: 5,
+    fontSize: 20
+  },
+  title1: {
+    color: '#FFF',
+    marginTop: 10,
+    textAlign: 'center',
+    opacity: 5,
+    fontSize: 34,
+    fontWeight: 'bold'
   },
   logo: {
-    width: 120,
-    height: 120
+    width: 180,
+    height: 180
   },
   input: {
     height: 40,
@@ -119,7 +148,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     color: '#FFF',
-    paddingHorizontal: 10
+    fontSize: 18,
+    paddingHorizontal: 10,
+    borderRadius:10
   },
   buttonWrapper: {
     paddingLeft: 20,
@@ -128,7 +159,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#2980b9',
-    paddingVertical: 10
+    paddingVertical: 10,
+    marginBottom: 10,
+    borderRadius:10
   },
   buttonText: {
     textAlign: 'center',
