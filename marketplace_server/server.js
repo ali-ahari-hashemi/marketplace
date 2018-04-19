@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
     var output = jre.spawnSync(
       ['./lib/SignUp.jar'],
       'authentication.SignUp',
-      [data.username, data.password],
+      [data.username, data.password, data.firstname, data.lastname],
       { encoding: 'utf8' }
     ).stdout.trim();
     console.log(output);
@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
 
   // Get user object associated with given userID
   socket.on("getUser", (userID) => {
-    console.log(userID);
+    console.log("getuser", userID);
     var output = jre.spawnSync(
       ['./lib/GetUser.jar'],
       'user.GetUser',
@@ -63,19 +63,25 @@ io.on('connection', (socket) => {
 
   // Add Card
   socket.on("addCard", (data) => {
-
+    console.log(data);
+    var output = jre.spawnSync(
+      ['./lib/AddCard.jar'],
+      'cards.AddCard',
+      [data.userID, 'test', data.card.price, '0', data.card.imageURL, data.card.itemName],
+      { encoding: 'utf8' }
+    ).stderr.trim();
+    console.log(output);
   });
 
   // Get cards for client
   socket.on("getCards", (userID) => {
+    console.log(userID);
     var output = jre.spawnSync(
       ['./lib/GetCards.jar'],
       'cards.GetCards',
       [userID],
       { encoding: 'utf8' }
     ).stdout.trim();
-    //console.log(output);
-
     const cards = JSON.parse(output);
     socket.emit("sendCards", cards);
   });
@@ -109,9 +115,22 @@ io.on('connection', (socket) => {
       'user.UpdateBio',
       [data.userID, userJsonStringForInput],
       { encoding: 'utf8' }
-    ).stderr.trim();
+    ).stdout.trim();
     console.log(output);
+  });
 
+  // Update password
+  socket.on("updatePassword", (data) => {
+    var output = jre.spawnSync(
+      ['./lib/UpdatePass.jar'],
+      'user.UpdatePass',
+      [data.userID, data.oldPassword, data.newPassword],
+      { encoding: 'utf8' }
+    ).stdout.trim();
+    console.log(output);
+    var result = parseInt(output);
+    if (result == 1) { socket.emit("validUpdatePassword"); }
+    else { socket.emit("invalidUpdatePassword"); }
   });
 
   // Socket Disconnected

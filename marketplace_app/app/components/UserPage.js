@@ -8,9 +8,12 @@ export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.handleUpdateBio = this.handleUpdateBio.bind(this);
+    this.handleUpdatePassword = this.handleUpdatePassword.bind(this);
     this.state = {
       text: 'Your Bio Goes Here...',
-      user: null
+      user: null,
+      oldPassword: '',
+      newPassword: '',
     };
   }
 
@@ -23,10 +26,20 @@ export default class UserPage extends React.Component {
   componentWillUnmount() {
     this.socket.disconnect();
   }
-  
+
   handleUpdateBio() {
     this.state.user.bio = this.state.text
     this.socket.emit("updateBio", {userID: this.props.userID, user: this.state.user})
+  }
+  handleUpdatePassword() {
+    this.socket.emit("updatePassword", {userID: this.props.userID, oldPassword: this.state.oldPassword, newPassword: this.state.newPassword})
+    this.socket.on("validUpdatePassword", () => {
+      this.socket.emit("getUser", this.props.userID);
+      this.socket.on("sendUser", (data) => this.setState({user: data, text: data.bio}));
+    });
+    this.socket.on("invalidUpdatePassword", () => { // TODO
+
+    });
   }
 
   render(){
@@ -64,6 +77,7 @@ export default class UserPage extends React.Component {
               placeholder="current password"
               placeholderTextColor="rgba(255,255,255,0.7)"
               returnKeyType="next"
+              onChangeText={(oldPassword) => this.setState({oldPassword})}
               onSubmitEditing={() => this.passwordInput.focus()}
               autoCapitalize="none"
               autoCorrect={false}
@@ -73,6 +87,7 @@ export default class UserPage extends React.Component {
               placeholder="new password"
               placeholderTextColor="rgba(255,255,255,0.7)"
               returnKeyType="next"
+              onChangeText={(newPassword) => this.setState({newPassword})}
               onSubmitEditing={() => this.passwordInput2.focus()}
               secureTextEntry
               style={styles.input}
@@ -88,7 +103,10 @@ export default class UserPage extends React.Component {
               />
 
             <View style={styles.buttonWrapper}>
-              <TouchableOpacity style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={this.handleUpdatePassword}
+              >
                 <Text style={styles.buttonText}> UPDATE PASSWORD </Text>
               </TouchableOpacity>
             </View>

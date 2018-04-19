@@ -3,8 +3,10 @@ import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Button, Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon, Content, Footer } from 'native-base';
 import Head from './Head';
 import SocketIOClient from 'socket.io-client';
+import { withNavigation } from 'react-navigation';
 
-export default class MainPage extends React.Component {
+
+class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.swipeRight = this.swipeRight.bind(this);
@@ -15,7 +17,7 @@ export default class MainPage extends React.Component {
   }
 
   swipeRight() {
-    //this.socket.emit({userID1: this.props.userID, userID2: this.state.currentCard.userID, swipeDirection: 1});
+    // TODO
   }
   swipeLeft() {
     // TODO
@@ -78,7 +80,10 @@ export default class MainPage extends React.Component {
         </Content>
 
         <View style={styles.buttonWrapper}>
-          <TouchableOpacity style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.buttonContainer}
+            onPress={() => this.props.navigation.navigate('AddNewItemPage', {userID: this.props.userID})}
+          >
             <Text style={styles.buttonText}> ADD NEW ITEM </Text>
           </TouchableOpacity>
         </View>
@@ -111,3 +116,5 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   }
 });
+
+export default withNavigation(MainPage);

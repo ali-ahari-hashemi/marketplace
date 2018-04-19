@@ -6,6 +6,8 @@ export default class SignUpPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstname: '',
+      lastname: '',
       username: '',
       password: '',
       confirmPassword: '',
@@ -27,7 +29,7 @@ export default class SignUpPage extends React.Component {
   componentWillUnmount() {
     this.socket.disconnect();
   }
-  
+
   render () {
     return (
       <View style={styles.container}>
@@ -37,6 +39,26 @@ export default class SignUpPage extends React.Component {
 
         <View style={styles.formContainer}>
             <TextInput
+              placeholder="first name"
+              placeholderTextColor="rgba(255,255,255,0.7)"
+              returnKeyType="next"
+              onChangeText={(firstname) => this.setState({ firstname })}
+              onSubmitEditing={() => this.passwordInput.focus()}
+              autoCapitalize="none"
+              autoCorrect={false}
+              style={styles.input}
+            />
+            <TextInput
+              placeholder="last name"
+              placeholderTextColor="rgba(255,255,255,0.7)"
+              returnKeyType="next"
+              onChangeText={(lastname) => this.setState({ lastname })}
+              onSubmitEditing={() => this.passwordInput.focus()}
+              autoCapitalize="none"
+              autoCorrect={false}
+              style={styles.input}
+            />
+            <TextInput
               placeholder="username"
               placeholderTextColor="rgba(255,255,255,0.7)"
               returnKeyType="next"
@@ -45,7 +67,7 @@ export default class SignUpPage extends React.Component {
               autoCapitalize="none"
               autoCorrect={false}
               style={styles.input}
-              />
+            />
             <TextInput
               placeholder="new password"
               placeholderTextColor="rgba(255,255,255,0.7)"
@@ -67,7 +89,7 @@ export default class SignUpPage extends React.Component {
               />
 
             <View style={styles.buttonWrapper}>
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.buttonContainer}
                 onPress={this.handleSignup}
               >
