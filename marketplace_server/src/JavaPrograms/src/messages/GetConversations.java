@@ -38,7 +38,8 @@ public class GetConversations {
 				jsontext += "},";
 				
 			}
-			jsontext = jsontext.substring(0,jsontext.length() - 1);
+			if (!jsontext.equals(""))
+				jsontext = jsontext.substring(0,jsontext.length() - 1);
 			jsontext += "]";
 			jsontext = "[" + jsontext;
 			
