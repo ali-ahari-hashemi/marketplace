@@ -1,4 +1,4 @@
-package test;
+package messages;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 //input userid
 //output json of conversations
-public class test {
+public class GetConversations {
 
 	public static void main(String [] args) {
 		Connection conn = null;
