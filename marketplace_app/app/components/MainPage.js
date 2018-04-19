@@ -19,8 +19,10 @@ class MainPage extends React.Component {
   }
 
   swipeRight() {
-    console.log(this.state.DeckSwiper.wrappedInstance.state.selectedItem.cardID);
-    
+    this.cardID = this.state.DeckSwiper.wrappedInstance.state.selectedItem.cardID;
+    this.userID2 = this.state.DeckSwiper.wrappedInstance.state.selectedItem.userID;
+    console.log(this.cardID);
+    this.socket.emit("swipe", { userID1: this.props.userID, userID2: this.userID2, cardID: this.cardID, swipeDirection: 1 })
   }
   swipeLeft() {
     // TODO
