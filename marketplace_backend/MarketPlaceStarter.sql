@@ -40,64 +40,74 @@ Create Table Conversations (
     constraint user_id_1 foreign key (user_id_1) references User (userID),
     constraint user_id_2 foreign key (user_id_2) references User (userID) );
 
+INSERT INTO User (username, password, userJson) values 
+    ('Heermann', 'Andrew', '{
+    "userID": "1",
+    "username": "Heermann",
+    "firstName": "Andrew",
+    "lastName": "Heermann",
+    "bio": "Hello World"
+    }'), 
+    ('Shah', 'Aditya', '{
+    "userID": "2",
+    "username": "Shah",
+    "firstName": "Adi",
+    "lastName": "Shah",
+    "bio": "Hello World"
+    }' ), 
+    ('Chan', 'Allison', '{
+    "userID": "3",
+    "username": "Chan",
+    "firstName": "Allison",
+    "lastName": "Chan",
+    "bio": "Hello World"
+    }'), 
+    ('Hashemi', 'Ali', '{
+    "userID": "4",
+    "username": "Hashemi",
+    "firstName": "Ali",
+    "lastName": "Hashemi",
+    "bio": "Hello World"
+    }');
+    
 
-    INSERT INTO User (username, password) values ('Heermann', 'Andrew'), ('Shah', 'Aditya' ), ('Chan', 'Allison'), ('Hashemi', 'Ali');
 
     Insert into Cards (itemJson, userID) values 
     ('{
     "itemForSale": "Car",
-    "userName": "jessica",
+    "userName": "Chan",
     "userID": "3",
-    "distance": "3 Miles",
+    "distance": "3 miles",
     "price": "$5,000",
     "imageURL": "https://i.imgur.com/nudswXu.jpg"
   }', 3), ('{
     "itemForSale": "Unused Iphone X",
-    "userName": "bob",
+    "userName": "Heermann",
     "userID": "1",
-    "distance": ".5 Miles",
+    "distance": ".5 miles",
     "price": "$500",
     "imageURL": "https://i.imgur.com/zbh721x.jpg"
   }', 1), ('{
     "itemForSale": "PS4",
-    "userName": "jeff",
+    "userName": "Shah",
     "userID": "2",
     "distance": "10 miles",
     "price": "$200",
     "imageURL": "https://i.imgur.com/ILlxG2j.jpg"
-  }', 2) ;
+  }', 2),
+  ('{
+    "itemForSale": "Chair",
+    "userName": "Hashemi",
+    "userID": "4",
+    "distance": "1 miles",
+    "price": "$1",
+    "imageURL": "https://i.imgur.com/aWkpX3W.png"
+  }', 4)
+  
+  ;
     
  
-	INSERT INTO User (username, password, userJson) values 
-    ('Heermann', 'Andrew', '{
-    "userID": "1",
-    "username":"Heermann",
-    "firstName":"Andrew",
-    "lastName":"Heermann",
-    "bio":"Hello World"
-    }'), 
-    ('Shah', 'Aditya', '{
-    "userID": "2",
-    "username":"Shah",
-    "firstName":"Adi",
-    "lastName":"Shah",
-    "bio":"Hello World"
-    }' ), 
-    ('Chan', 'Allison', '{
-    "userID": "3",
-    "username":"Chan",
-    "firstName":"Allison",
-    "lastName":"Chan",
-    "bio":"Hello World"
-    }'), 
-    ('Hashemi', 'Ali', '{
-    "userID": "4",
-    "username":"Hashemi",
-    "firstName":"Ali",
-    "lastName":"Hashemi",
-    "bio":"Hello World"
-    }');
-    
+	
 
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 3, 1, 'Car');
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (3, 1, 1, 'Car');
