@@ -94,7 +94,7 @@ public class SendMessage {
 			
 			//add comma and jsontext1 to messagesjson of conversation where user_id_1 = senderID
 			 ps = conn.prepareStatement("UPDATE Conversations" + 
-			 		"	SET messagesJson =  CONCAT(COALESCE(messagesJson,''), ?)" + 
+			 		"	SET messagesJson =  CONCAT(?, COALESCE(messagesJson,''))" + 
 			 		"	WHERE user_id_1 = ? AND cardID = ?;");
 			 ps.setString(1, jsontext1);
 			 ps.setInt(2, senderID);
