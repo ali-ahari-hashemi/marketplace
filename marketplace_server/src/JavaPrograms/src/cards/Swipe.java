@@ -38,8 +38,8 @@ public class Swipe {
 					ps2.executeUpdate();
 					
 					
-					ps2.setInt(1, user_id);
-					ps2.setInt(2, user2_id);
+					ps2.setInt(1, user2_id);
+					ps2.setInt(2, user_id);
 					ps2.setInt(3, card_id);
 					ps2.executeUpdate();
 				}catch (SQLException e)
