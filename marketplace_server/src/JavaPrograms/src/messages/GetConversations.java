@@ -1,4 +1,4 @@
-package messages;
+package test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 //input userid
 //output json of conversations
-public class GetConversations {
+public class test {
 
 	public static void main(String [] args) {
 		Connection conn = null;
@@ -19,9 +19,9 @@ public class GetConversations {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=root&useSSL=false");
 			
-			ps = conn.prepareStatement("Select u.username, con.user_id_2, c.itemJson" + 
+			ps = conn.prepareStatement("Select u.username, con.user_id_2, c.itemJson " + 
 					"From Conversations con, Cards c, User u " + 
-					"WHERE user_id_1 = ? AND c.cardID = con.cardID AND u.userID = con.user_id_2;");
+					"WHERE user_id_1 = ? AND c.cardID = con.cardID AND u.userID = con.user_id_2");
 			ps.setInt(1, user_id);
 			rs = ps.executeQuery();
 
