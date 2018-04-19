@@ -13,11 +13,14 @@ class MainPage extends React.Component {
     this.swipeLeft = this.swipeLeft.bind(this);
     this.state = {
       cards: null,
+      currentCard: null,
+      DeckSwiper: null,
     }
   }
 
   swipeRight() {
-    // TODO
+    console.log(this.state.DeckSwiper.wrappedInstance.state.selectedItem.cardID);
+    
   }
   swipeLeft() {
     // TODO
@@ -45,9 +48,12 @@ class MainPage extends React.Component {
           <View style={styles.container}>
               <DeckSwiper
                 looping={false}
+                ref={(c) => {
+                  this._deckSwiper = c;
+                  this.state.DeckSwiper = this._deckSwiper;
+                }}
                 onSwipeRight={this.swipeRight}
                 onSwipeLeft={this.swipeLeft}
-                ref={(c) => this._deckSwiper = c}
                 dataSource={this.state.cards}
                 renderEmpty={() =>
                   <View style={{ alignSelf: "center" }}>

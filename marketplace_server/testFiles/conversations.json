@@ -1,8 +1,15 @@
 [
   {
-     "user2ID": 4,
+     "userID2": 1,
      "username": "blah",
-     "cardID": 4,
-     "cardName": "Item"
+     "card": {
+       "cardID": 1,
+       "itemForSale": "Car",
+       "userName": "bob",
+       "userID": 3,
+       "distance": ".5 Miles",
+       "price": "$500",
+       "imageURL": "https://i.imgur.com/zbh721x.jpg"
+     }
   }
 ]
