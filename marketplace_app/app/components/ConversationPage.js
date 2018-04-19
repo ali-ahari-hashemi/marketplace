@@ -37,7 +37,7 @@ class ConversationPage extends React.Component {
             data={this.state.conversations}
             renderItem={({ item }) => (
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('MessagePage', {userID: this.props.userID, userID2: item.userID2, cardID: item.cardID, cardname: item.card.itemForSale})}
+                onPress={() => this.props.navigation.navigate('MessagePage', {userID: this.props.userID, userID2: item.user2ID, cardID: item.card.cardID, cardname: item.card.itemForSale})}
               >
                 <ListItem
                   title={item.card.itemForSale}

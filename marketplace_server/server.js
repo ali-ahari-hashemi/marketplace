@@ -97,14 +97,22 @@ io.on('connection', (socket) => {
       'cards.Swipe',
       [data.userID1, newuserID2, newcardID, data.swipeDirection],
       { encoding: 'utf8' }
-    ).stdout.trim();
+    ).stderr.trim();
     console.log(output);
 
   });
 
   // Get conversations of client
   socket.on("getConversations", (userID) => {
-    const conversations = require('./testFiles/conversations.json'); // TODO set this based on java program
+    //const conversations = require('./testFiles/conversations.json'); // TODO set this based on java program
+    var output = jre.spawnSync(
+      ['./lib/getConversations.jar'],
+      'cards.Swipe',
+      [userID],
+      { encoding: 'utf8' }
+    ).stdout.trim();
+    console.log(output);
+    const conversations = JSON.parse(output);
     socket.emit("sendConversations", conversations);
   });
 

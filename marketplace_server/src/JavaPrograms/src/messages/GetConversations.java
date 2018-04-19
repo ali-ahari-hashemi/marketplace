@@ -1,4 +1,4 @@
-package messages;
+package test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 //input userid
 //output json of conversations
-public class GetConversations {
+public class test {
 
 	public static void main(String [] args) {
 		Connection conn = null;
@@ -17,7 +17,7 @@ public class GetConversations {
 		try {
 			int user_id = Integer.parseInt(args[0]);
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=alskdjfhg&useSSL=false");
 			
 			ps = conn.prepareStatement("Select u.username, con.user_id_2, c.itemJson " + 
 					"From Conversations con, Cards c, User u " + 
@@ -25,14 +25,14 @@ public class GetConversations {
 			ps.setInt(1, user_id);
 			rs = ps.executeQuery();
 
-			String jsontext = "[";
+			String jsontext = "";
 			while (rs.next())
 			{
 				String username = rs.getString("username");
 				int id = rs.getInt("user_id_2");
 				Object itemJson = rs.getObject("itemJson");
-				jsontext += "{\"user2ID\":" + id;
-				jsontext += "\"username\":" + username;
+				jsontext += "{\"user2ID\":" + id + ",";
+				jsontext += "\"username\":" + username + ",";
 				jsontext += "\"card\":";
 				jsontext += itemJson;
 				jsontext += "},";
@@ -40,6 +40,7 @@ public class GetConversations {
 			}
 			jsontext = jsontext.substring(0,jsontext.length() - 1);
 			jsontext += "]";
+			jsontext = "[" + jsontext;
 			
 			System.out.println(jsontext);
 			
