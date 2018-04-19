@@ -40,8 +40,37 @@ Create Table Conversations (
     constraint user_id_1 foreign key (user_id_1) references User (userID),
     constraint user_id_2 foreign key (user_id_2) references User (userID) );
 
+INSERT INTO User (username, password, userJson) values 
+    ('Heermann', 'Andrew', '{
+    "userID": "1",
+    "username": "Heermann",
+    "firstName": "Andrew",
+    "lastName": "Heermann",
+    "bio": "Hello World"
+    }'), 
+    ('Shah', 'Aditya', '{
+    "userID": "2",
+    "username": "Shah",
+    "firstName": "Adi",
+    "lastName": "Shah",
+    "bio": "Hello World"
+    }' ), 
+    ('Chan', 'Allison', '{
+    "userID": "3",
+    "username": "Chan",
+    "firstName": "Allison",
+    "lastName": "Chan",
+    "bio": "Hello World"
+    }'), 
+    ('Hashemi', 'Ali', '{
+    "userID": "4",
+    "username": "Hashemi",
+    "firstName": "Ali",
+    "lastName": "Hashemi",
+    "bio": "Hello World"
+    }');
+    
 
-    INSERT INTO User (username, password) values ('Heermann', 'Andrew'), ('Shah', 'Aditya' ), ('Chan', 'Allison'), ('Hashemi', 'Ali');
 
     Insert into Cards (itemJson, userID) values 
     ('{
@@ -68,36 +97,7 @@ Create Table Conversations (
   }', 2) ;
     
  
-	INSERT INTO User (username, password, userJson) values 
-    ('Heermann', 'Andrew', '{
-    "userID": "1",
-    "username":"Heermann",
-    "firstName":"Andrew",
-    "lastName":"Heermann",
-    "bio":"Hello World"
-    }'), 
-    ('Shah', 'Aditya', '{
-    "userID": "2",
-    "username":"Shah",
-    "firstName":"Adi",
-    "lastName":"Shah",
-    "bio":"Hello World"
-    }' ), 
-    ('Chan', 'Allison', '{
-    "userID": "3",
-    "username":"Chan",
-    "firstName":"Allison",
-    "lastName":"Chan",
-    "bio":"Hello World"
-    }'), 
-    ('Hashemi', 'Ali', '{
-    "userID": "4",
-    "username":"Hashemi",
-    "firstName":"Ali",
-    "lastName":"Hashemi",
-    "bio":"Hello World"
-    }');
-    
+	
 
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 3, 1, 'Car');
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (3, 1, 1, 'Car');
