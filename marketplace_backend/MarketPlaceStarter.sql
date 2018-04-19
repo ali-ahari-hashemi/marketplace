@@ -102,8 +102,19 @@ Create Table Conversations (
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 3, 1, 'Car');
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (3, 1, 1, 'Car');
 
+<<<<<<< HEAD
+    INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 3, 1, 'Car');
+    INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (3, 1, 1, 'Car');
+
+=======
+>>>>>>> master
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 2, 3, 'PS4');
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (2, 1, 3, 'PS4');
     
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (2, 1, 2, 'Unused Iphone X');
+<<<<<<< HEAD
     INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 2, 2, 'Unused Iphone X');
+
+=======
+    INSERT INTO Conversations (user_id_1, user_id_2, cardID, cardName) values (1, 2, 2, 'Unused Iphone X');
+>>>>>>> master
