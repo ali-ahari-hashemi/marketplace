@@ -10,45 +10,38 @@ import java.sql.SQLException;
 //output json of conversations
 public class GetConversations {
 
-	public static void main(String[] args) {
+	public static void main(String [] args) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=a&useSSL=false");
-			
 			int user_id = Integer.parseInt(args[0]);
-			//get all usernames of people user_id_1 is chatting with.
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/MarketPlace?user=root&password=root&useSSL=false");
 			
-			//**********only get conversations when user_id_1 is equal to user_id!!!! because now there are two convos for each!
-			//**********send back usernames and cardNames!
-			
-			psName = conn.prepareStatement("SELECT username FROM User WHERE userID = ?");
+			ps = conn.prepareStatement("Select u.username, con.user_id_2, c.itemJson " + 
+					"From Conversations con, Cards c, User u " + 
+					"WHERE user_id_1 = ? AND c.cardID = con.cardID AND u.userID = con.user_id_2");
 			ps.setInt(1, user_id);
-			ps.setInt(2, user_id);
+			rs = ps.executeQuery();
 
-			//then get all the usernames of all these ids and store them in a json list of objects with ids and corresponding names
-			//**********AND ITEMS??
+			String jsontext = "[";
+			while (rs.next())
+			{
+				String username = rs.getString("username");
+				int id = rs.getInt("user_id_2");
+				Object itemJson = rs.getObject("itemJson");
+				jsontext += "{\"user2ID\":" + id;
+				jsontext += "\"username\":" + username;
+				jsontext += "\"card\":";
+				jsontext += itemJson;
+				jsontext += "},";
+				
+			}
+			jsontext = jsontext.substring(0,jsontext.length() - 1);
+			jsontext += "]";
 			
-			/*Select username from User where userID in (Select CASE
-					WHEN user_id_1 = 1 THEN user_id_2
-				    WHEN user_id_2 = 1 THEN user_id_1
-				    ELSE 'null'
-				    END
-				From Conversations)*/ //this is fucking gold
-			String jsontext = "";
-			
-			String jsontext += "[";
-			
-			String jsontext += "{";
-			String jsontext += "\"user2ID\": " + 2,
-			String jsontext += "\"username\": " + "name of other person",
-			         cardID: 1,
-			         cardName: "name of card"
-			String jsontext += "}";
-			
-			String jsontext += "]";
+			System.out.println(jsontext);
 			
 		}
 		catch (SQLException e)
