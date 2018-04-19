@@ -1,4 +1,4 @@
-package test;
+package messages;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 //input userid
 //output json of conversations
-public class test {
+public class GetConversations {
 
 	public static void main(String [] args) {
 		Connection conn = null;
@@ -31,8 +31,8 @@ public class test {
 				String username = rs.getString("username");
 				int id = rs.getInt("user_id_2");
 				Object itemJson = rs.getObject("itemJson");
-				jsontext += "{\"user2ID\":" + id;
-				jsontext += "\"username\":" + username;
+				jsontext += "{\"user2ID\":" + id + ",";
+				jsontext += "\"username\":" + username + ",";
 				jsontext += "\"card\":";
 				jsontext += itemJson;
 				jsontext += "},";
