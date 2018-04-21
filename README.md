@@ -20,6 +20,6 @@ Starting the app:
 
 
 #Screenshots
-![Alt text](/Screenshots/Swiping on an item.png?raw=true "Swiping on an item")
-![Alt text](/Screenshots/Messaging.png?raw=true "Messaging a seller")
-![Alt text](/Screenshots/Add New Item.png?raw=true "Adding a new Item")
+![Alt text](/Screenshots/Swiping\ on\ an\ item.png "Swiping on an item")
+![Alt text](/Screenshots/Messaging.png "Messaging a seller")
+![Alt text](/Screenshots/Add\ New\ Item.png "Adding a new Item")
