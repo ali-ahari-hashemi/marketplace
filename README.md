@@ -17,3 +17,9 @@ Starting the app:
 2) cd into marketplace_app
 3) run yarn start
 4) once you see the QR code, either open it up in expo by scanning the code or press "i" to open your simulator
+
+
+#Screenshots
+![Alt text](/Screenshots/Swiping on an item.png?raw=true "Swiping on an item")
+![Alt text](/Screenshots/Messaging.png?raw=true "Messaging a seller")
+![Alt text](/Screenshots/Add New Item.png?raw=true "Adding a new Item")
