@@ -20,11 +20,12 @@ Starting the app:
 
 
 # Screenshots
-<img src="/Screenshots/Swiping.png" height="300">
-<img src="/Screenshots/Swiping.png" width="300">
+Swiping on items
+
 <img src="/Screenshots/Swiping.png" width="300">
 
+Messaging a seller
+<img src="/Screenshots/Messaging.png" width="300">
 
-![Alt text](/Screenshots/Swiping.png "Swiping on an item")
-![Alt text](/Screenshots/Messaging.png "Messaging a seller")
-![Alt text](/Screenshots/Add.png "Adding a new Item")
+Adding an item to sell
+<img src="/Screenshots/Add.png" width="300">
