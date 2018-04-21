@@ -19,7 +19,12 @@ Starting the app:
 4) once you see the QR code, either open it up in expo by scanning the code or press "i" to open your simulator
 
 
-#Screenshots
-![Alt text](/Screenshots/Swiping\ on\ an\ item.png "Swiping on an item")
+# Screenshots
+<img src="/Screenshots/Swiping.png" height="300">
+<img src="/Screenshots/Swiping.png" width="300">
+<img src="/Screenshots/Swiping.png" width="300">
+
+
+![Alt text](/Screenshots/Swiping.png "Swiping on an item")
 ![Alt text](/Screenshots/Messaging.png "Messaging a seller")
-![Alt text](/Screenshots/Add\ New\ Item.png "Adding a new Item")
+![Alt text](/Screenshots/Add.png "Adding a new Item")
