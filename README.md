@@ -8,11 +8,12 @@ Setting up environment for the first time on your computer:
 6) run "npm install"
 
 Starting the server:
-1) cd into marketplace_server
-2) run npm start
+1) run 'MarketPlaceStarter.sql' to create the database along with some test accounts
+2) cd into marketplace_server
+3) run npm start
 
 Starting the app:
-1) change the ip address in constants.js to yours
-1) cd into marketplace_app
-2) run yarn start
-3) once you see the QR code, either open it up in expo by scanning the code or press "i" to open your simulator
+1) enter your ip address in constants.js inside marketplace_app
+2) cd into marketplace_app
+3) run yarn start
+4) once you see the QR code, either open it up in expo by scanning the code or press "i" to open your simulator

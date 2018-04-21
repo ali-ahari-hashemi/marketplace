@@ -1,4 +1,4 @@
 const port = '8080';
-const ip = 'http://10.0.21.85';
+const ip = 'ENTER YOUR IP HERE';
 
-export const HOST = ip + ':' + port;
+export const HOST = 'http://' + ip + ':' + port;

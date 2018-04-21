@@ -45,7 +45,6 @@ io.on('connection', (socket) => {
 
   // Get user object associated with given userID
   socket.on("getUser", (userID) => {
-    console.log("getuser", userID);
     var output = jre.spawnSync(
       ['./lib/GetUser.jar'],
       'user.GetUser',
@@ -58,7 +57,6 @@ io.on('connection', (socket) => {
 
   // Add Card
   socket.on("addCard", (data) => {
-    console.log(data);
     var output = jre.spawnSync(
       ['./lib/AddCard.jar'],
       'cards.AddCard',
