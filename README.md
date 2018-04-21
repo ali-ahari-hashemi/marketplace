@@ -20,12 +20,6 @@ Starting the app:
 
 
 # Screenshots
-Swiping on items
-
 <img src="/Screenshots/Swiping.png" width="300">
-
-Messaging a seller
 <img src="/Screenshots/Messaging.png" width="300">
-
-Adding an item to sell
 <img src="/Screenshots/Add.png" width="300">
